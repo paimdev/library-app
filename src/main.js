@@ -7,8 +7,9 @@ function Book(author, title, numberOfPages, read) {
   this.read = read
 };
 
-function addBookToLibrary() {
-  
+function addBookToLibrary(author, title, numberOfPages, read) {
+  let newBook = new Book(author, title, numberOfPages, read);
+  myLibrary.push(newBook);
 }
 
 const container = document.querySelector(".container");
