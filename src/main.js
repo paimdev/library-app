@@ -1,6 +1,5 @@
 let myLibrary = [];
 
-
 function Book(author, title, numberOfPages, read, extra) {
   this.author = author,
   this.title = title,
@@ -9,8 +8,10 @@ function Book(author, title, numberOfPages, read, extra) {
 };
 
 function addBookToLibrary() {
-
+  
 }
+
+const container = document.querySelector(".container");
 
 function bookDisplayer(booksArray) {
   for (const book of booksArray) {
@@ -30,5 +31,9 @@ function bookDisplayer(booksArray) {
     bookCard.appendChild(titleParagraph);
     bookCard.appendChild(pagesParagraph);
     bookCard.appendChild(readParagraph);
+
+    container.appendChild(bookCard);
   }
 }
+
+bookDisplayer(myLibrary);
