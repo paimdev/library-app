@@ -1,6 +1,6 @@
 let myLibrary = [];
 
-function Book(author, title, numberOfPages, read, id) {
+function Book(author, title, numberOfPages, read) {
   (this.author = author),
     (this.title = title),
     (this.numberOfPages = numberOfPages),
