@@ -9,23 +9,28 @@
   </head>
   <body>
     <div class="container">
+      <header>
+        <h1 class="page-title">Library app</h1>
+        <pc class="description">Feel free to add your books</p>
+      </header>
+      <div class="books-container"></div>
       <div class="forms-container">
         <button class="new-book">Add a new book</button>
         <div class="forms">
           <form action="">
             <input
               id="authorName"
-              class="hidden-form"
+              class="hidden-form form-text"
               placeholder="Book Author"
             />
             <input
               id="bookTitle"
-              class="hidden-form"
+              class="hidden-form form-text"
               placeholder="Book Title"
             />
             <input
               id="numberPages"
-              class="hidden-form"
+              class="hidden-form form-text"
               placeholder="Number of pages"
             />
             <label class="hidden-form"
@@ -35,6 +40,7 @@
                 class="hidden-form"
                 name="read status"
                 value="read"
+                checked
               />Read</label
             >
             <label class="hidden-form"

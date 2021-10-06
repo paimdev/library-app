@@ -8,7 +8,9 @@ function Book(author, title, numberOfPages, read, id) {
 }
 
 Book.prototype.toggleRead = (id) => {
-  myLibrary[id].read === "read" ? myLibrary[id].read = "not read" : myLibrary[id].read = "read";
+  myLibrary[id].read === "read"
+    ? (myLibrary[id].read = "not read")
+    : (myLibrary[id].read = "read");
   clearCards();
   bookDisplayer(myLibrary);
 };
@@ -18,7 +20,7 @@ function addBookToLibrary(author, title, numberOfPages, read) {
   myLibrary.push(newBook);
 }
 
-const container = document.querySelector(".container");
+const container = document.querySelector(".books-container");
 const newButton = document.querySelector(".new-book");
 const submitButton = document.querySelector("#submit-button");
 const bookList = document.querySelectorAll("books-card");
@@ -30,42 +32,48 @@ function bookDisplayer(booksArray) {
     bookCard.classList.add("books-cards");
 
     const authorParagraph = document.createElement("p");
+    authorParagraph.classList.add("book-item");
     const titleParagraph = document.createElement("p");
+    titleParagraph.classList.add("book-item");
     const pagesParagraph = document.createElement("p");
+    pagesParagraph.classList.add("book-item");
     const readParagraph = document.createElement("p");
+    readParagraph.classList.add("book-item");
     const readButton = document.createElement("button");
+    readButton.classList.add("book-item");
     const removeButton = document.createElement("button");
+    removeButton.classList.add("book-item");
 
+    readButton.classList.add("read-button");
     removeButton.classList.add("remove-button");
 
-    authorParagraph.textContent = book.author;
-    titleParagraph.textContent = book.title;
-    pagesParagraph.textContent = book.numberOfPages;
-    readParagraph.textContent = book.read;
+    authorParagraph.textContent = `Author: ${book.author}`;
+    titleParagraph.textContent = `Title: ${book.title}`;
+    pagesParagraph.textContent = `Pages: ${book.numberOfPages}`;
+    readParagraph.textContent = `Status: ${book.read}`;
     readButton.textContent = "Toggle Read";
     removeButton.textContent = "Remove Book";
 
-    
     bookCard.appendChild(authorParagraph);
     bookCard.appendChild(titleParagraph);
     bookCard.appendChild(pagesParagraph);
     bookCard.appendChild(readParagraph);
     bookCard.appendChild(readButton);
     bookCard.appendChild(removeButton);
-    
+
     container.appendChild(bookCard);
     bookCard.setAttribute("id", `${i}`);
     i++;
 
-    removeButton.addEventListener('click', () => {
-      const id = bookCard.getAttribute('id');
+    removeButton.addEventListener("click", () => {
+      const id = bookCard.getAttribute("id");
       myLibrary.splice(id, 1);
       clearCards();
       bookDisplayer(myLibrary);
     });
 
-    readButton.addEventListener('click', () => {
-      const id = bookCard.getAttribute('id');
+    readButton.addEventListener("click", () => {
+      const id = bookCard.getAttribute("id");
       myLibrary[id].toggleRead(id);
     });
   }
@@ -103,9 +111,6 @@ function submitBook() {
   bookDisplayer(myLibrary);
 }
 
-addBookToLibrary("test author", "test title", "test pages", "read");
-bookDisplayer(myLibrary);
-
 newButton.addEventListener("click", () => {
   newButton.style.display = "none";
   showForm();
@@ -116,3 +121,10 @@ submitButton.addEventListener("click", () => {
   hideForm();
   newButton.style.display = "block";
 });
+
+addBookToLibrary("Chibundu Onuzo", "Sankofa: A Novel", "304", "read");
+addBookToLibrary("Tom Vitale", "In the Weeds", "407", "not read");
+addBookToLibrary("Amor Towles", "The Lincoln Highway", "588", "read");
+addBookToLibrary("Jonathan Franzen", "Crossroads: A Novel ", "681", "read");
+addBookToLibrary("Jane Goodall", "The Book of Hope", "254", "not read");
+bookDisplayer(myLibrary);
