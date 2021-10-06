@@ -48,7 +48,6 @@ function clearCards() {
   const bookList = document.querySelectorAll(".books-cards");
   for (const bookCard of bookList) {
     bookCard.remove();
-    console.log('removing card');
   }
 }
 
@@ -56,6 +55,13 @@ function showForm() {
   const forms = document.querySelectorAll(".hidden-form");
   for (const form of forms) {
     form.style.display = "block";
+  }
+}
+
+function hideForm() {
+  const forms = document.querySelectorAll(".hidden-form");
+  for (const form of forms) {
+    form.style.display = "none";
   }
 }
 
@@ -80,5 +86,6 @@ newButton.addEventListener("click", () => {
 
 submitButton.addEventListener("click", () => {
   submitBook();
+  hideForm();
   newButton.style.display = "block";
 });
