@@ -1,10 +1,11 @@
 let myLibrary = [];
 
-function Book(author, title, numberOfPages, read) {
+function Book(author, title, numberOfPages, read, id) {
   (this.author = author),
     (this.title = title),
     (this.numberOfPages = numberOfPages),
-    (this.read = read);
+    (this.read = read),
+    (this.id = id);
 }
 
 function addBookToLibrary(author, title, numberOfPages, read) {
@@ -17,7 +18,9 @@ const newButton = document.querySelector(".new-book");
 const submitButton = document.querySelector("#submit-button");
 const bookList = document.querySelectorAll("books-card");
 
+
 function bookDisplayer(booksArray) {
+  let i = 0;
   for (const book of booksArray) {
     const bookCard = document.createElement("div");
     bookCard.classList.add("books-cards");
@@ -41,6 +44,8 @@ function bookDisplayer(booksArray) {
     bookCard.appendChild(removeButton);
 
     container.appendChild(bookCard);
+    bookCard.setAttribute("id", `${i}`);
+    i++;
   }
 }
 
