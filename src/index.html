@@ -12,11 +12,14 @@
   <div class="forms-container">
     <button class="new-book">Add a new book</button>
     <div class="forms">
-      <input class="hidden-form" placeholder="Book Author" id="authorName">
-      <input class="hidden-form" placeholder="Book Title" id="bookTitle">
-      <input class="hidden-form" placeholder="Number of pages" id="numberPages">
-      <input class="hidden-form" placeholder="Read or not read?" id="read">
-      <button class="hidden-form" type="button" id="submit-button">Submit</button>
+      <form action="">
+        <input id="authorName" class="hidden-form" placeholder="Book Author">
+        <input id="bookTitle" class="hidden-form" placeholder="Book Title">
+        <input id="numberPages" class="hidden-form" placeholder="Number of pages">
+        <label class="hidden-form"><input type="radio" id="read" class="hidden-form" name="read status" value="read">Read</label>
+        <label class="hidden-form"><input type="radio" id="read" class="hidden-form" name="read status" value="not read">Not Read</label>
+        <button class="hidden-form" type="button" id="submit-button">Submit</button>
+      </form>
     </div>
   </div>
   <script src="main.js"></script>
