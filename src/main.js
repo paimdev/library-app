@@ -14,8 +14,7 @@ function addBookToLibrary(author, title, numberOfPages, read) {
 
 const container = document.querySelector(".container");
 const newButton = document.querySelector(".new-book");
-const form = document.querySelector(".form-containers");
-
+const submitButton = document.querySelector("#submit-button")
 
 function bookDisplayer(booksArray) {
   for (const book of booksArray) {
@@ -40,11 +39,23 @@ function bookDisplayer(booksArray) {
   }
 }
 
-function createForm() {
-  
+function showForm() {
+  const forms = document.querySelectorAll(".hidden-form");
+  for (const form of forms) {
+    form.style.display = 'block';
+  };
 };
+
+function submitBook() {
+
+}
 
 addBookToLibrary('some author', 'some title', 'some pages', 'some status');
 bookDisplayer(myLibrary);
 
-newButton.addEventListener('click', createForm());
+newButton.addEventListener('click', () => {
+  newButton.style.display = "none";
+  showForm();
+});
+
+
