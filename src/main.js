@@ -10,6 +10,8 @@ function Book(author, title, numberOfPages, read, id) {
 
 Book.prototype.toggleRead = () => {
   this.read === "read" ? this.read = "not read" : this.read = "read";
+  clearCards();
+  bookDisplayer(myLibrary);
 };
 
 function addBookToLibrary(author, title, numberOfPages, read) {
@@ -90,7 +92,7 @@ function submitBook() {
   var inputAuthor = document.getElementById("authorName").value;
   var inputTitle = document.getElementById("bookTitle").value;
   var inputPages = document.getElementById("numberPages").value;
-  var inputRead = document.getElementById("read").value;
+  var inputRead = document.querySelector('input[id="read"]:checked').value;
 
   addBookToLibrary(inputAuthor, inputTitle, inputPages, inputRead);
   clearCards();
