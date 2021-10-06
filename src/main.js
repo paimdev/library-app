@@ -28,6 +28,7 @@ function bookDisplayer(booksArray) {
     const titleParagraph = document.createElement("p");
     const pagesParagraph = document.createElement("p");
     const readParagraph = document.createElement("p");
+    const readButton = document.createElement("button");
     const removeButton = document.createElement("button");
 
     removeButton.classList.add("remove-button");
@@ -36,13 +37,15 @@ function bookDisplayer(booksArray) {
     titleParagraph.textContent = book.title;
     pagesParagraph.textContent = book.numberOfPages;
     readParagraph.textContent = book.read;
-    removeButton.textContent = "remove book";
+    readButton.textContent = "Toggle Read";
+    removeButton.textContent = "Remove Book";
 
     
     bookCard.appendChild(authorParagraph);
     bookCard.appendChild(titleParagraph);
     bookCard.appendChild(pagesParagraph);
     bookCard.appendChild(readParagraph);
+    bookCard.appendChild(readButton);
     bookCard.appendChild(removeButton);
     
     container.appendChild(bookCard);
