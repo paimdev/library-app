@@ -81,6 +81,11 @@ function submitBook() {
   bookDisplayer(myLibrary);
 }
 
+function removeCard(id) {
+  const cardToRemove = document.getElementById(id);
+  cardToRemove.remove();
+}
+
 addBookToLibrary("some author", "some title", "some pages", "some status");
 bookDisplayer(myLibrary);
 
