@@ -4,12 +4,11 @@ function Book(author, title, numberOfPages, read, id) {
   (this.author = author),
     (this.title = title),
     (this.numberOfPages = numberOfPages),
-    (this.read = read),
-    (this.id = id);
+    (this.read = read);
 }
 
-Book.prototype.toggleRead = () => {
-  this.read === "read" ? this.read = "not read" : this.read = "read";
+Book.prototype.toggleRead = (id) => {
+  myLibrary[id].read === "read" ? myLibrary[id].read = "not read" : myLibrary[id].read = "read";
   clearCards();
   bookDisplayer(myLibrary);
 };
@@ -64,6 +63,11 @@ function bookDisplayer(booksArray) {
       clearCards();
       bookDisplayer(myLibrary);
     });
+
+    readButton.addEventListener('click', () => {
+      const id = bookCard.getAttribute('id');
+      myLibrary[id].toggleRead(id);
+    });
   }
 }
 
@@ -99,7 +103,7 @@ function submitBook() {
   bookDisplayer(myLibrary);
 }
 
-addBookToLibrary("some author", "some title", "some pages", "some status");
+addBookToLibrary("test author", "test title", "test pages", "read");
 bookDisplayer(myLibrary);
 
 newButton.addEventListener("click", () => {
