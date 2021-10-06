@@ -18,7 +18,6 @@ const newButton = document.querySelector(".new-book");
 const submitButton = document.querySelector("#submit-button");
 const bookList = document.querySelectorAll("books-card");
 
-
 function bookDisplayer(booksArray) {
   let i = 0;
   for (const book of booksArray) {
@@ -31,21 +30,31 @@ function bookDisplayer(booksArray) {
     const readParagraph = document.createElement("p");
     const removeButton = document.createElement("button");
 
+    removeButton.classList.add("remove-button");
+
     authorParagraph.textContent = book.author;
     titleParagraph.textContent = book.title;
     pagesParagraph.textContent = book.numberOfPages;
     readParagraph.textContent = book.read;
     removeButton.textContent = "remove book";
 
+    
     bookCard.appendChild(authorParagraph);
     bookCard.appendChild(titleParagraph);
     bookCard.appendChild(pagesParagraph);
     bookCard.appendChild(readParagraph);
     bookCard.appendChild(removeButton);
-
+    
     container.appendChild(bookCard);
     bookCard.setAttribute("id", `${i}`);
     i++;
+
+    removeButton.addEventListener('click', () => {
+      const id = bookCard.getAttribute('id');
+      myLibrary.splice(id, 1);
+      clearCards();
+      bookDisplayer(myLibrary);
+    });
   }
 }
 
@@ -79,11 +88,6 @@ function submitBook() {
   addBookToLibrary(inputAuthor, inputTitle, inputPages, inputRead);
   clearCards();
   bookDisplayer(myLibrary);
-}
-
-function removeCard(id) {
-  const cardToRemove = document.getElementById(id);
-  cardToRemove.remove();
 }
 
 addBookToLibrary("some author", "some title", "some pages", "some status");
