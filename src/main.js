@@ -1,19 +1,22 @@
 let myLibrary = [];
 
-function Book(author, title, numberOfPages, read) {
-  (this.author = author),
-    (this.title = title),
-    (this.numberOfPages = numberOfPages),
-    (this.read = read);
-}
-
-Book.prototype.toggleRead = (id) => {
-  myLibrary[id].read === "read"
-    ? (myLibrary[id].read = "not read")
-    : (myLibrary[id].read = "read");
-  clearCards();
-  bookDisplayer(myLibrary);
+class Book {
+  constructor(author, title, numberOfPages, read) {
+      (this.author = author),
+      (this.title = title),
+      (this.numberOfPages = numberOfPages),
+      (this.read = read);
+  }
+  
+  toggleRead = (id) => {
+    myLibrary[id].read === "read"
+      ? (myLibrary[id].read = "not read")
+      : (myLibrary[id].read = "read");
+    clearCards();
+    bookDisplayer(myLibrary);
+  };
 };
+
 
 function addBookToLibrary(author, title, numberOfPages, read) {
   let newBook = new Book(author, title, numberOfPages, read);
